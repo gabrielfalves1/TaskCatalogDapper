@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskCatalogDapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b97984c1dc5b8f2bcde45eb3e43201bc686229e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskCatalogDapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskCatalogDapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
