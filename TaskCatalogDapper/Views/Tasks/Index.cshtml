@@ -32,10 +32,12 @@
                     <th scope="row">@row</th>
                     <td>@item.Title</td>
                     <td>@item.Description</td>
-                    <td>@item.Priority</td>
+                    <td>@item.Priority.GetDisplayName()</td>
                     <td>
-                        <a href="/Tasks/Edit/@item.Id">Editar</a>
-                        <a href="/Tasks/Delete/@item.Id">Excluir</a>
+
+                        <a href="/Tasks/Edit/@item.Id" title="Editar Tarefa"><img src="~/images/screwdriver.png" alt="Editar" width="16" height="16" style="margin-right: 4px;" /></a>
+                        <a href="/Tasks/Delete/@item.Id" title="Excluir Tarefa"><img src="~/images/delete.png" alt="Excluir" width="16" height="16" style="margin-right: 4px;" /></a>
+
                     </td>
                 </tr>
             }

@@ -2,16 +2,31 @@
     ViewData["Title"] = "Criar Tarefa";
 }
 @model TaskCatalogDapper.Models.TaskItem
+@using Microsoft.AspNetCore.Mvc.Rendering
 
-<form asp-action="@(ViewContext.RouteData.Values["action"])">
-    <label>Título:</label>
-    <input asp-for="Title"></input>
-    <br />
-    <label>Descrição:</label>
-    <input asp-for="Description"></input>
-    <br />
-    <label>Prioridade:</label>
-    <input asp-for="Priority"></input>
-    <br />
-    <button type="submit">Salvar</button>
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post" class="mt-4">
+
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Título:</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Descrição:</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Priority" class="control-label">Prioridade:</label>
+        @Html.DropDownListFor(model => model.Priority, (List<SelectListItem>)ViewBag.priorities, "Selecione...", new { @class = "form-control" })
+        <span asp-validation-for="Priority" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+
 </form>
