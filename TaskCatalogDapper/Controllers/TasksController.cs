@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskCatalogDapper.Database;
+using TaskCatalogDapper.Enums;
+using TaskCatalogDapper.Helpers;
 using TaskCatalogDapper.Models;
 using TaskCatalogDapper.Repositories;
 
@@ -19,19 +21,31 @@ namespace TaskCatalogDapper.Controllers
             return View(tasks);
         }
 
-        public IActionResult Create() => View();
+
+        public IActionResult Create()
+        {
+            ViewBag.priorities = EnumHelper.ToSelectList<Priority>();
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(TaskItem task)
         {
-            if (!ModelState.IsValid) return View(task);
+            if (!ModelState.IsValid)
+            {
+                ViewData["Priority"] = EnumHelper.ToSelectList<Priority>();
+                return View(task);
+            }
+
             await _repository.CreateAsync(task);
+
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Edit(int id)
         {
             var task = await _repository.GetByIdAsync(id);
+            ViewBag.priorities = EnumHelper.ToSelectList<Priority>();
             return task == null ? NotFound() : View(task);
         }
 
